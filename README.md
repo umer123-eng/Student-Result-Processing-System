@@ -69,3 +69,94 @@ This repository contains the foundational database schema and ER model for the *
 **Umer Mansuri**  
 Intern @ Elevate Labs | July 2025
 
+
+# 🎓 Student Result Processing System – Day 2
+
+## 🔰 Day 2: Insert Data + Views
+
+This part of the project focuses on inserting data into the database, executing JOIN-based queries, and creating reusable views to analyze student performance.
+
+---
+
+## 🎯 Objectives
+
+- Insert sample data into all relational tables
+- Use JOINs for reporting and analysis
+- Create **Views** for simplified query access
+- Add **advanced SQL operations** using aggregates and subqueries
+
+---
+
+## 📋 Tasks Completed
+
+### ✅ 1. Data Insertion
+All tables populated using INSERT INTO:
+- Students
+- Courses
+- Semester
+- StudentCourses
+- Results
+- Grades
+
+✅ All data saved in data.sql
+
+---
+
+### ✅ 2. Queries with JOINs
+Created complex SELECT queries for:
+
+- Student-wise subject performance  
+- Course-wise average, max, min marks  
+- Exam-type filters (e.g., Final only)  
+- GPA computation using `Grades` table  
+- Listing students who failed  
+- Course toppers using subqueries
+
+✅ All queries saved in queries_day2.sql
+
+---
+
+### ✅ 3. Views Created
+
+| View Name                 | Description                                      |
+|-------------------------  |--------------------------------------------------|
+| view_student_results      | Full result details per student per subject      |
+| view_course_performance   | Avg marks and attempts per course                |
+| view_distinction_students | Students who scored 75+ in any subject          |
+
+✅ View scripts are also saved in `queries_day2.sql`
+
+---
+
+## 💡 Advanced Queries Added
+
+- 📌 **Topper Selection** – Highest scorer in each subject  
+- 📌 **GPA Calculation** – Average grade point using JOIN + GROUP BY  
+- 📌 **Failed Students** – Students scoring less than 40 marks  
+- 📌 **Final Exam Only** – Filtering exam results by type  
+- 📌 **View for Distinction Students** – Marks ≥ 75
+
+---
+
+## 🗂️ Files in this Repo
+
+| File Name           | Description                                        |
+|---------------------|----------------------------------------------------|
+| data.sql            | Insert data for all tables                         |
+| queries_day2.sql    | SELECT + JOIN queries + all views                  |
+| README.md           | This project overview for Day 2                    |
+
+
+---
+
+## 🛠 Tools Used
+
+- MySQL Workbench
+---
+
+## 👨‍💻 Created By
+
+**Umer Mansuri**  
+Intern @ Elevate Labs | July 2025
+
+
