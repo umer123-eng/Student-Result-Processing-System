@@ -160,14 +160,15 @@ Created complex SELECT queries for:
 Intern @ Elevate Labs | July 2025
 
 ## 🔰 Day 3 – Stored Procedures, GPA Calculation & Summary Views
-🎯 Objectives
+
+## 🎯 Objectives
 
 - Create and execute a Stored Procedure to calculate grades based on marks.
 - Use CASE statements for GPA logic.
 - Generate a summary view showing student performance and GPA.
 - Understand procedural SQL and modular query design.
 
-✅ Tasks Completed
+## ✅ Tasks Completed
 1. 🔁 Stored Procedure: Calculate_Grades()
 Automatically assigns grades based on the marks a student received using SQL CASE.
 
@@ -235,20 +236,20 @@ FROM Students s
 JOIN Results r ON s.Stud_ID = r.Student_id
 GROUP BY s.Stud_ID, s.name;
 
-💾 Files in This Repo
+## 💾 Files in This Repo
 
 - procedures.sql – SQL stored procedure for GPA & grade update
 - views.sql – GPA view and result summary view
 - README.md – Day 3 overview and logic explanation
 
-🧠 Concepts Used
+## 🧠 Concepts Used
 
 - SQL Stored Procedures (CREATE PROCEDURE)
 - CASE-based GPA logic
 - Aggregate functions with GROUP BY
 - SQL Views for modular reporting
 
-🛠 Tools Used
+## 🛠 Tools Used
 
 - MySQL Workbench
 - SQL Scripting Console
@@ -259,14 +260,14 @@ Umer Mansuri
 Intern @ Elevate Labs | July 2025
 
 ## 🔰 Day 4 – Ranking, Reporting & Advanced Analysis
-🎯 Objectives
+## 🎯 Objectives
 
 - Use SQL Window Functions like RANK() to assign GPA rankings.
 - Create multiple summary views for performance reporting.
 - Add logic to track failed students and toppers.
 - Generate views for reporting and insights.
 
-✅ Tasks Completed
+## ✅ Tasks Completed
 1. 🏆 GPA Rank Using RANK()
 
 Query to compute GPA for all students and rank them using RANK() window function.
@@ -327,13 +328,13 @@ WHERE r.marks_obained = (
     WHERE r2.Course_id = r.Course_id
 );
 
-📁 Files in This Repo
+## 📁 Files in This Repo
 
 - rank_queries.sql – RANK(), GPA Topper, Subject Toppers
 - views_day4.sql – Views: top_3_students, failed_students, subject_toppers
 - README.md – Day 4 documentation (this file)
 
-🛠 Tools Used
+## 🛠 Tools Used
 
 - MySQL Workbench
 - MySQL Server
