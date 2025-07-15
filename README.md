@@ -159,7 +159,7 @@ Created complex SELECT queries for:
 **Umer Mansuri**  
 Intern @ Elevate Labs | July 2025
 
-Day 3 – Stored Procedures, GPA Calculation & Summary Views
+## 🔰 Day 3 – Stored Procedures, GPA Calculation & Summary Views
 🎯 Objectives
 
 - Create and execute a Stored Procedure to calculate grades based on marks.
@@ -258,7 +258,7 @@ GROUP BY s.Stud_ID, s.name;
 Umer Mansuri
 Intern @ Elevate Labs | July 2025
 
-Day 4 – Ranking, Reporting & Advanced Analysis
+## 🔰 Day 4 – Ranking, Reporting & Advanced Analysis
 🎯 Objectives
 
 - Use SQL Window Functions like RANK() to assign GPA rankings.
