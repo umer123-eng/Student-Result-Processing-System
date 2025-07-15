@@ -159,7 +159,189 @@ Created complex SELECT queries for:
 **Umer Mansuri**  
 Intern @ Elevate Labs | July 2025
 
+Day 3 – Stored Procedures, GPA Calculation & Summary Views
+🎯 Objectives
 
+- Create and execute a Stored Procedure to calculate grades based on marks.
+- Use CASE statements for GPA logic.
+- Generate a summary view showing student performance and GPA.
+- Understand procedural SQL and modular query design.
+
+✅ Tasks Completed
+1. 🔁 Stored Procedure: Calculate_Grades()
+Automatically assigns grades based on the marks a student received using SQL CASE.
+
+
+DELIMITER //
+CREATE PROCEDURE Calculate_Grades()
+BEGIN 
+	UPDATE results
+    SET grades = (
+		CASE 
+			WHEN marks_obained >=90 THEN 'A+'	
+            WHEN marks_obained >=80 THEN 'A'
+            WHEN marks_obained >=70 THEN 'B+'
+            WHEN marks_obained >=60 THEN 'B'
+			WHEN marks_obained >=50 THEN 'C'
+			WHEN marks_obained >=40 THEN 'D'
+			ELSE 'F'
+		END
+	);
+END //
+DELIMITER ;
+
+✅ Called using: CALL Calculate_Grades();
+2. 📊 GPA Calculation View: GPA_View
+Calculates GPA per student by converting grades to grade points using SQL CASE.
+
+
+CREATE VIEW GPA_View AS
+SELECT 
+    Student_id,
+    ROUND(AVG(
+        CASE grade
+            WHEN 'A+' THEN 10
+            WHEN 'A' THEN 9
+            WHEN 'B+' THEN 8
+            WHEN 'B' THEN 7
+            WHEN 'C' THEN 6
+            WHEN 'D' THEN 5
+            ELSE 0
+        END
+    ), 2) AS GPA
+FROM Results
+GROUP BY Student_id;
+
+✅ Result: Each student’s GPA based on all subjects
+3. 📄 Summary View: result_summary
+Displays student ID, name, and GPA by joining Students and Results:
+
+CREATE VIEW result_summary AS
+SELECT 
+    s.Stud_ID,
+    s.name,
+    ROUND(AVG(
+        CASE r.grade
+            WHEN 'A+' THEN 10
+            WHEN 'A' THEN 9
+            WHEN 'B+' THEN 8
+            WHEN 'B' THEN 7
+            WHEN 'C' THEN 6
+            WHEN 'D' THEN 5
+            ELSE 0
+        END
+    ), 2) AS GPA
+FROM Students s
+JOIN Results r ON s.Stud_ID = r.Student_id
+GROUP BY s.Stud_ID, s.name;
+
+💾 Files in This Repo
+
+- procedures.sql – SQL stored procedure for GPA & grade update
+- views.sql – GPA view and result summary view
+- README.md – Day 3 overview and logic explanation
+
+🧠 Concepts Used
+
+- SQL Stored Procedures (CREATE PROCEDURE)
+- CASE-based GPA logic
+- Aggregate functions with GROUP BY
+- SQL Views for modular reporting
+
+🛠 Tools Used
+
+- MySQL Workbench
+- SQL Scripting Console
+- ER Diagram + SQL Views Panel
+
+👨‍💻 Created By
+Umer Mansuri
+Intern @ Elevate Labs | July 2025
+
+Day 4 – Ranking, Reporting & Advanced Analysis
+🎯 Objectives
+
+- Use SQL Window Functions like RANK() to assign GPA rankings.
+- Create multiple summary views for performance reporting.
+- Add logic to track failed students and toppers.
+- Generate views for reporting and insights.
+
+✅ Tasks Completed
+1. 🏆 GPA Rank Using RANK()
+
+Query to compute GPA for all students and rank them using RANK() window function.
+
+
+SELECT s.Stud_ID, s.name, 
+ROUND(AVG(
+    CASE r.grade
+        WHEN 'A+' THEN 10
+        WHEN 'A' THEN 9
+        WHEN 'B+' THEN 8
+        WHEN 'B' THEN 7
+        WHEN 'C' THEN 6
+        WHEN 'D' THEN 5
+        ELSE 0
+    END), 2) AS GPA,
+RANK() OVER (ORDER BY AVG(
+    CASE r.grade
+        WHEN 'A+' THEN 10
+        WHEN 'A' THEN 9
+        WHEN 'B+' THEN 8
+        WHEN 'B' THEN 7
+        WHEN 'C' THEN 6
+        WHEN 'D' THEN 5
+        ELSE 0
+    END) DESC) AS GPA_Rank
+FROM Students s
+JOIN Results r ON s.Stud_ID = r.Student_id
+GROUP BY s.Stud_ID, s.name;
+
+2. 🥇 View: Top 3 Students
+Displays top 3 GPA-ranked students in a view.
+
+CREATE VIEW top_3_students AS
+SELECT *
+FROM result_summary
+ORDER BY GPA DESC
+LIMIT 3;
+
+3. ❌ View: Failed Students
+Lists students who failed (marks < 40) in any subject.
+
+CREATE VIEW failed_students AS
+SELECT s.Stud_ID, s.name, r.marks_obained
+FROM Students s
+JOIN Results r ON s.Stud_ID = r.Student_id
+WHERE r.marks_obained < 40;
+
+4. 🧠 View: Subject Toppers
+Identifies highest scorers per subject.
+
+CREATE VIEW subject_toppers AS
+SELECT r.Course_id, r.Student_id, r.marks_obained
+FROM Results r
+WHERE r.marks_obained = (
+    SELECT MAX(marks_obained)
+    FROM Results r2
+    WHERE r2.Course_id = r.Course_id
+);
+
+📁 Files in This Repo
+
+- rank_queries.sql – RANK(), GPA Topper, Subject Toppers
+- views_day4.sql – Views: top_3_students, failed_students, subject_toppers
+- README.md – Day 4 documentation (this file)
+
+🛠 Tools Used
+
+- MySQL Workbench
+- MySQL Server
+- SQL Console & ER Tool
+
+👨‍💻 Created By
+Umer Mansuri
+Intern @ Elevate Labs | July 2025
 
 
 
