@@ -258,7 +258,6 @@ GROUP BY s.Stud_ID, s.name;
 ## 👨‍💻 Created By
 
 **Umer Mansuri**
-
 Intern @ Elevate Labs | July 2025
 
 ## 🔰 Day 4 – Ranking, Reporting & Advanced Analysis
@@ -345,7 +344,6 @@ WHERE r.marks_obained = (
 ## 👨‍💻 Created By
 
 **Umer Mansuri**
-
 Intern @ Elevate Labs | July 2025
 
 
