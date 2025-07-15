@@ -169,7 +169,7 @@ Intern @ Elevate Labs | July 2025
 - Understand procedural SQL and modular query design.
 
 ## ✅ Tasks Completed
-1. 🔁 Stored Procedure: Calculate_Grades()
+## 1. 🔁 Stored Procedure: Calculate_Grades()
 Automatically assigns grades based on the marks a student received using SQL CASE.
 
 
@@ -192,7 +192,7 @@ END //
 DELIMITER ;
 
 ✅ Called using: CALL Calculate_Grades();
-2. 📊 GPA Calculation View: GPA_View
+## 2. 📊 GPA Calculation View: GPA_View
 Calculates GPA per student by converting grades to grade points using SQL CASE.
 
 
@@ -214,7 +214,7 @@ FROM Results
 GROUP BY Student_id;
 
 ✅ Result: Each student’s GPA based on all subjects
-3. 📄 Summary View: result_summary
+## 3. 📄 Summary View: result_summary
 Displays student ID, name, and GPA by joining Students and Results:
 
 CREATE VIEW result_summary AS
@@ -257,10 +257,12 @@ GROUP BY s.Stud_ID, s.name;
 
 ## 👨‍💻 Created By
 
-**Umer Mansuri**
+**Umer Mansuri**  
 Intern @ Elevate Labs | July 2025
 
+
 ## 🔰 Day 4 – Ranking, Reporting & Advanced Analysis
+
 ## 🎯 Objectives
 
 - Use SQL Window Functions like RANK() to assign GPA rankings.
@@ -269,7 +271,7 @@ Intern @ Elevate Labs | July 2025
 - Generate views for reporting and insights.
 
 ## ✅ Tasks Completed
-1. 🏆 GPA Rank Using RANK()
+## 1. 🏆 GPA Rank Using RANK()
 
 Query to compute GPA for all students and rank them using RANK() window function.
 
@@ -299,7 +301,7 @@ FROM Students s
 JOIN Results r ON s.Stud_ID = r.Student_id
 GROUP BY s.Stud_ID, s.name;
 
-2. 🥇 View: Top 3 Students
+## 2. 🥇 View: Top 3 Students
 Displays top 3 GPA-ranked students in a view.
 
 CREATE VIEW top_3_students AS
@@ -308,7 +310,7 @@ FROM result_summary
 ORDER BY GPA DESC
 LIMIT 3;
 
-3. ❌ View: Failed Students
+## 3. ❌ View: Failed Students
 Lists students who failed (marks < 40) in any subject.
 
 CREATE VIEW failed_students AS
@@ -317,7 +319,7 @@ FROM Students s
 JOIN Results r ON s.Stud_ID = r.Student_id
 WHERE r.marks_obained < 40;
 
-4. 🧠 View: Subject Toppers
+## 4. 🧠 View: Subject Toppers
 Identifies highest scorers per subject.
 
 CREATE VIEW subject_toppers AS
@@ -343,7 +345,7 @@ WHERE r.marks_obained = (
 
 ## 👨‍💻 Created By
 
-**Umer Mansuri**
+**Umer Mansuri**  
 Intern @ Elevate Labs | July 2025
 
 
